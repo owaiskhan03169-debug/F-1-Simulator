@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "F1 Race Command Center | IBM watsonx AI",
+  title: "F1 RACEMIND AI COMMAND CENTER | IBM watsonx AI",
   description: "Ultra-premium AI-powered Formula 1 telemetry and race strategy system",
   icons: {
     icon: "/favicon.ico",
