@@ -1,0 +1,238 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  * {
+    @apply border-carbon-800;
+  }
+  
+  body {
+    @apply bg-carbon-950 text-carbon-100 font-sans antialiased;
+    overflow: hidden;
+  }
+
+  html, body, #root {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@layer components {
+  /* Glassmorphism Panel */
+  .glass-panel {
+    @apply bg-carbon-900/40 backdrop-blur-md border border-carbon-700/30 rounded-lg shadow-2xl;
+  }
+
+  .glass-panel-hover {
+    @apply glass-panel hover:bg-carbon-800/50 hover:border-carbon-600/40 transition-all duration-300;
+  }
+
+  /* Telemetry Card */
+  .telemetry-card {
+    @apply glass-panel p-4 relative overflow-hidden;
+  }
+
+  .telemetry-card::before {
+    content: '';
+    @apply absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-telemetry-cyan to-transparent opacity-50;
+  }
+
+  /* Data Display */
+  .data-value {
+    @apply font-mono text-3xl font-bold tracking-tight;
+  }
+
+  .data-label {
+    @apply text-carbon-400 text-xs uppercase tracking-wider font-medium;
+  }
+
+  /* Status Indicators */
+  .status-optimal {
+    @apply text-telemetry-green;
+  }
+
+  .status-warning {
+    @apply text-telemetry-amber;
+  }
+
+  .status-critical {
+    @apply text-telemetry-red;
+  }
+
+  /* Glow Effects */
+  .glow-cyan {
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+  }
+
+  .glow-green {
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+  }
+
+  .glow-red {
+    box-shadow: 0 0 20px rgba(255, 59, 59, 0.5);
+  }
+
+  /* Progress Bars */
+  .progress-bar {
+    @apply h-2 bg-carbon-800 rounded-full overflow-hidden relative;
+  }
+
+  .progress-fill {
+    @apply h-full bg-gradient-to-r from-telemetry-cyan to-telemetry-green transition-all duration-300;
+  }
+
+  /* Animated Border */
+  .animated-border {
+    @apply relative;
+  }
+
+  .animated-border::before {
+    content: '';
+    @apply absolute inset-0 rounded-lg;
+    background: linear-gradient(90deg, 
+      transparent, 
+      rgba(0, 212, 255, 0.5), 
+      transparent
+    );
+    animation: border-flow 3s linear infinite;
+  }
+
+  @keyframes border-flow {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  /* Scan Line Effect */
+  .scan-line {
+    @apply absolute inset-0 pointer-events-none;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0, 212, 255, 0.1) 50%,
+      transparent 100%
+    );
+    animation: scan 4s linear infinite;
+  }
+
+  @keyframes scan {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(100%);
+    }
+  }
+
+  /* Warning Pulse */
+  .warning-pulse {
+    animation: warning-pulse 1s ease-in-out infinite;
+  }
+
+  @keyframes warning-pulse {
+    0%, 100% {
+      opacity: 1;
+      box-shadow: 0 0 20px rgba(255, 184, 0, 0.5);
+    }
+    50% {
+      opacity: 0.7;
+      box-shadow: 0 0 40px rgba(255, 184, 0, 0.8);
+    }
+  }
+
+  /* Critical Alert */
+  .critical-alert {
+    animation: critical-alert 0.5s ease-in-out infinite;
+  }
+
+  @keyframes critical-alert {
+    0%, 100% {
+      border-color: rgba(255, 59, 59, 0.8);
+      box-shadow: 0 0 30px rgba(255, 59, 59, 0.6);
+    }
+    50% {
+      border-color: rgba(255, 59, 59, 1);
+      box-shadow: 0 0 50px rgba(255, 59, 59, 0.9);
+    }
+  }
+
+  /* Grid Background */
+  .grid-background {
+    background-image: 
+      linear-gradient(rgba(0, 212, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 212, 255, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  /* Holographic Effect */
+  .holographic {
+    background: linear-gradient(
+      135deg,
+      rgba(0, 212, 255, 0.1) 0%,
+      rgba(0, 255, 136, 0.1) 50%,
+      rgba(168, 85, 247, 0.1) 100%
+    );
+  }
+
+  /* Metric Card */
+  .metric-card {
+    @apply glass-panel p-6 space-y-2;
+  }
+
+  .metric-card:hover {
+    @apply border-telemetry-cyan/50;
+  }
+
+  /* Button Styles */
+  .btn-primary {
+    @apply px-6 py-3 bg-telemetry-cyan text-carbon-950 font-semibold rounded-lg 
+           hover:bg-telemetry-cyan/90 transition-all duration-200 
+           shadow-lg hover:shadow-telemetry-cyan/50;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 glass-panel text-carbon-100 font-semibold rounded-lg 
+           hover:bg-carbon-800/60 transition-all duration-200;
+  }
+
+  /* Scrollbar Styling */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-carbon-900;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-carbon-700 rounded-full;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-carbon-600;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-telemetry-cyan to-telemetry-green;
+  }
+
+  .border-gradient {
+    border-image: linear-gradient(90deg, 
+      rgba(0, 212, 255, 0.5), 
+      rgba(0, 255, 136, 0.5)
+    ) 1;
+  }
+}
+
+/* Made with Bob */
