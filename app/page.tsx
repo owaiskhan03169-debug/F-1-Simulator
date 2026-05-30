@@ -86,7 +86,7 @@ export default function Home() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="text-4xl font-bold text-gradient mb-4">F1 RACE COMMAND CENTER</div>
+          <div className="text-4xl font-bold text-gradient mb-4">F1 RACEMIND AI COMMAND CENTER</div>
           <div className="text-sm text-carbon-400 font-mono">Initializing systems...</div>
         </div>
       </div>
@@ -104,7 +104,7 @@ export default function Home() {
       >
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <div className="text-3xl font-bold text-gradient">F1 RACE COMMAND CENTER</div>
+            <div className="text-3xl font-bold text-gradient">F1 RACEMIND AI COMMAND CENTER</div>
             <div className="glass-panel px-3 py-1">
               <span className="text-xs text-carbon-400 font-mono">POWERED BY </span>
               <span className="text-sm font-bold text-telemetry-cyan">IBM WATSONX AI</span>
